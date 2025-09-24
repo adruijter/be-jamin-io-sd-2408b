@@ -11,7 +11,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/allergeen', [AllergeenController::class, 'index']);
+Route::get('/allergeen', [AllergeenController::class, 'index'])->name('allergeen.index');;
+
+Route::get('/allergeen/create', [AllergeenController::class, 'create'])->name('allergeen.create');
+
+Route::post('allergeen', [AllergeenController::class, 'store'])->name('allergeen.store');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

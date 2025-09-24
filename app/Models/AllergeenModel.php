@@ -13,5 +13,11 @@ class AllergeenModel extends Model
         return DB::select('CALL Sp_GetAllAllergenen');
     }
 
+    public function sp_CreateAllergeen($name, $description)
+    {
+        $row = DB::selectOne('CALL sp_CreateAllergeen(?, ?)', [$name, $description]);
+        return $row->new_id;
+    }
+
 
 }
