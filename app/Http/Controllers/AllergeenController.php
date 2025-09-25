@@ -46,11 +46,14 @@ class AllergeenController extends Controller
     public function store(Request $request)
     {
 
-        
+        $data = $request->validate([
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:255'
+        ]);
       
         $newId = $this->allergeenModel->sp_CreateAllergeen(
-                    $request->all()['name'],
-                    $request->all()['description']
+                    $data['name'],
+                    $data['description']
                 );
 
         return redirect()->route('allergeen.index')
