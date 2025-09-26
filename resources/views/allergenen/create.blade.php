@@ -12,7 +12,7 @@
         <h2>{{ $title }}</h2>
 
 
-        <form method="POST" action="/allergeen">
+        <form method="POST" action="{{ route('allergeen.store') }}">
             @csrf
             <div class="mb-3">
                 <label for="InputName" class="form-label">Naam</label>

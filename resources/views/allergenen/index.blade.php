@@ -12,16 +12,16 @@
         <h1>{{ $title }}</h1>
 
         @if (session('success'))
-            <div class="alert alert-success alert-dimissable fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" aria-label="sluiten" data-bs-dismiss="alert"></button>
             </div>
-            <meta http-equiv="refresh" content="3;url={{ route('allergeen.index') }}">
+            <meta http-equiv="refresh" content="300;url={{ route('allergeen.index') }}">
         @endif
 
-        <a href="/allergeen/create">Nieuwe Allergeen</a>
+        <a href="{{ route('allergeen.create') }}" class="btn btn-primary mt-2">Nieuwe Allergeen</a>
     
-        <table class="table table-hover">
+        <table class="table table-hover mt-4">
             <thead>
                 <th>Naam</th>
                 <th>Omschrijving</th>
