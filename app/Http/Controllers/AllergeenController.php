@@ -72,17 +72,45 @@ class AllergeenController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AllergeenModel $allergeenModel)
+    public function edit($id)
     {
-        //
+        $allergeen = $this->allergeenModel->sp_GetAllergeenById($id);
+
+        // Als er geen allergeen bekent met het meegegeven id dan is $allergeen false en wordt er
+        // doorverwezen naar de 404 pagina
+        abort_if(!$allergeen, 404);
+
+        return view('allergenen.edit', [
+            'title' => 'Allergeen wijzigen',
+            'allergeen' => $allergeen
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AllergeenModel $allergeenModel)
+    public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $validated = $request->validate([
+            'naam' => ['required', 'string', 'max:50'],
+            'omschrijving' => ['required', 'string', 'max:255']
+        ]);
+
+        // dd($validated);
+
+        $affected = $this->allergeenModel->sp_UpdateAllergeen(
+            $id,
+            $validated['naam'],
+            $validated['omschrijving']
+        );
+
+        if ($affected === 0){
+            return back()->with('error', 'Er is niets gewijzigd of error bestaat niet');
+        }
+
+        return redirect()->route('allergeen.index')
+                         ->with('success', 'Allergeen succesvol bijgewerkt');
     }
 
     /**

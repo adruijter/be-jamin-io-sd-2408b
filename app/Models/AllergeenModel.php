@@ -35,4 +35,24 @@ class AllergeenModel extends Model
         return $result->affected ?? 0;
     }
 
+    public function sp_GetAllergeenById($id)
+    {
+        return DB::selectOne('CALL sp_GetAllergeenById(:id)', [
+            'id' => $id
+        ]);
+    }
+
+    public function sp_UpdateAllergeen($id, $naam, $omschrijving)
+    {
+        $row = DB::selectOne(
+            'CALL sp_UpdateAllergeen(:id, :naam, :omschrijving)', [
+                'id' => $id,
+                'naam' => $naam,
+                'omschrijving' => $omschrijving
+            ]
+        );
+
+        return $row->affected ?? 0;
+    }
+
 }

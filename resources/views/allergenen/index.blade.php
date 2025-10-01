@@ -28,6 +28,7 @@
                     <th>Naam</th>
                     <th>Omschrijving</th>
                     <th class="text-center">Verwijder</th>
+                    <th class="text-center">Wijzig</th>
                 </thead>
                 <tbody>
                     @forelse ($allergenen as $allergeen)
@@ -40,6 +41,13 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Verwijderen</button>
+                                </form>
+                            </td>
+                            <td class="text-center">
+                                <form action="{{ route('allergeen.edit', $allergeen->Id) }}" method="POST">
+                                    @csrf
+                                    @method('GET')
+                                    <button type="submit" class="btn btn-success">Wijzig</button>
                                 </form>
                             </td>
                         </tr>
