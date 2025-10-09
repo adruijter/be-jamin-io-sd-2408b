@@ -76,6 +76,7 @@ class AllergeenController extends Controller
     {
         $allergeen = $this->allergeenModel->sp_GetAllergeenById($id);
 
+
         // Als er geen allergeen bekent met het meegegeven id dan is $allergeen false en wordt er
         // doorverwezen naar de 404 pagina
         abort_if(!$allergeen, 404);
