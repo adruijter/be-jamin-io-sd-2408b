@@ -21,7 +21,26 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->productModel->sp_GetAllProducts();
-        dd($products);
+        // dd($products);
+
+        return view('product.index', [
+            'title' => 'Overzicht Magazijn Jamin',
+            'products' => $products
+        ]);
+    }
+
+    public function allergeenInfo($id)
+    {
+        return view('product.allergeenInfo', [
+            'id' => $id
+        ]);
+    }
+
+     public function LeverantieInfo($id)
+    {
+        return view('product.leverantieInfo', [
+            'id' => $id
+        ]);
     }
 
     /**

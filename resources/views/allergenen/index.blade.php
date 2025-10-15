@@ -11,7 +11,7 @@
 
         <div class="col-md-8">
 
-            <h1>{{ $title }}</h1>
+            <h2>{{ $title }}</h2>
 
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -21,7 +21,7 @@
                 <meta http-equiv="refresh" content="3;url={{ route('allergeen.index') }}">
             @endif
 
-            <a href="{{ route('allergeen.create') }}" class="btn btn-primary my-3">Nieuwe Allergeen</a>
+            <a href="{{ route('allergeen.create') }}" class="btn btn-primary btn-sm my-3">Nieuwe Allergeen</a>
         
             <table class="table table-striped table-bordered align-middle shadow-sm">
                 <thead>
@@ -40,14 +40,14 @@
                                     onsubmit="return confirm('Weet je zeker dat je dit allergeen wilt verwijderen?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Verwijderen</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Verwijderen</button>
                                 </form>
                             </td>
                             <td class="text-center">
                                 <form action="{{ route('allergeen.edit', $allergeen->Id) }}" method="POST">
                                     @csrf
                                     @method('GET')
-                                    <button type="submit" class="btn btn-success">Wijzig</button>
+                                    <button type="submit" class="btn btn-success btn-sm">Wijzig</button>
                                 </form>
                             </td>
                         </tr>
