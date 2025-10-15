@@ -26,6 +26,10 @@ Route::put('/allergeen/{id}', [AllergeenController::class, 'update'])->name('all
 
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 
+Route::get('/product/{id}/allergenenInfo', [ProductController::class, 'allergenenInfo'])->name('product.allergenenInfo');
+
+Route::get('/product/{id}/leverantieInfo', [ProductController::class, 'leverantieInfo'])->name('product.leverantieInfo');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
