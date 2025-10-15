@@ -57,7 +57,8 @@ class AllergeenController extends Controller
                 );
 
         return redirect()->route('allergeen.index')
-                         ->with('success', "Allergeen is succesvol toegevoegd met id" . $newId);
+                         ->with('success', "Allergeen is succesvol toegevoegd");
+                        //  ->with('success', "Allergeen is succesvol toegevoegd met id" . $newId);
         
     }
 

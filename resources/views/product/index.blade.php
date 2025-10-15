@@ -55,7 +55,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr colspan='3'>Geen allergenen bekent</tr>
+                        <tr colspan='6'>Geen  bekent producten aanwezig</tr>
                     @endforelse
                 </tbody>
             </table>
